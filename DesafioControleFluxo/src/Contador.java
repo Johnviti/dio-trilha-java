@@ -16,6 +16,9 @@ public class Contador{
         } catch (ParametrosInvalidosExceptio e) {
             System.out.println(e.getMessage());
         }
+        
+    } finaly {
+        scanner.close();
     }
     
     public static void contar(int parametroUm, int parametroDois) throws ParametrosInvalidosExceptio {
