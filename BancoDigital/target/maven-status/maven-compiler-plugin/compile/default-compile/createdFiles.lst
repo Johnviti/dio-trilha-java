@@ -1,0 +1,6 @@
+com\example\banco\modelo\ContaPoupanca.class
+com\example\banco\modelo\IConta.class
+com\example\banco\modelo\Conta.class
+com\example\banco\modelo\ContaCorrente.class
+com\example\banco\modelo\Banco.class
+com\example\banco\modelo\Cliente.class
