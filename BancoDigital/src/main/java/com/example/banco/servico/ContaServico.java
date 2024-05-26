@@ -4,6 +4,7 @@ import com.example.banco.modelo.Banco;
 import com.example.banco.modelo.Cliente;
 import com.example.banco.modelo.Conta;
 import com.example.banco.modelo.ContaCorrente;
+import com.example.banco.modelo.IConta;
 
 public class ContaServico {
     private Banco banco;
@@ -12,29 +13,31 @@ public class ContaServico {
         this.banco = banco;
     }
 
-    public Conta criarContaCorrente(Cliente cliente) {
-        Conta conta = new ContaCorrente(cliente);
-        banco.adicionarConta(conta);
+    public IConta criarContaCorrente(Cliente cliente) {
+        IConta conta = new ContaCorrente(cliente);
+        banco.getContas().add((Conta) conta);
         return conta;
     }
 
-    public void depositar(Conta conta, double valor) {
-        conta.depositar(valor);
+    // public Iconta criarContaPoupanca(Cliente cliente) {
+    //     IConta conta = new ContaPoupanca(cliente);
+    //     banco.getContas().add((Conta) conta);
+    //     return conta;
+    // }
+
+    public void depositar(IConta conta, double valor) {
+        conta.deposito(valor);
     }
 
-    public void sacar(Conta conta, double valor) {
-        conta.sacar(valor);
+    public void sacar(IConta conta, double valor) {
+        conta.saque(valor);
     }
 
-    public void transferir(Conta contaOrigem, Conta contaDestino, double valor) {
-        contaOrigem.transferir(valor, contaDestino);
+    public void transferir(IConta contaOrigem, IConta contaDestino, double valor) {
+        contaOrigem.transferencia(valor, contaDestino);
     }
 
-    public void imprimirSaldo(Conta conta) {
-        System.out.println(String.format("Saldo atual: %.2f", conta.getSaldo()));
-    }
-
-    public void imprimirExtrato(Conta conta) {
-        conta.imprimirExtrato();
+    public void imprimirExtrato(IConta conta) {
+        conta.extrato();
     }
 }
